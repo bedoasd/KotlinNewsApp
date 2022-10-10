@@ -38,7 +38,7 @@ class BreakingNewsPagingAdapter :PagingDataAdapter<Article,BreakingNewsPagingAda
             tvTitle.text="${data?.title}"
             tvDescription.text="${data?.description}"
             tvPublishedAt.text="${data?.publishedAt}"
-            tvSource.text="${data?.author}"
+            tvSource.text="${data?.source?.name}"
             Glide.with(ivArticleImage).load(data?.urlToImage).into(ivArticleImage)
 
         }

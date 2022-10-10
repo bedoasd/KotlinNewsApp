@@ -16,5 +16,15 @@ interface NewsApi  {
     ): Response<NewsResponse>
 
 
+     @GET("everything")
+     suspend fun getSearchedNews(
+         @Query("q") query:String,
+         @Query("from") from_date:String,
+         @Query("to") to_date:String,
+         @Query("sortBy")sortBy:String,
+         @Query("apiKey") apikey:String,
+         @Query("page") pageNumber: Int = 1
+    ):Response<NewsResponse>
+
 
 }

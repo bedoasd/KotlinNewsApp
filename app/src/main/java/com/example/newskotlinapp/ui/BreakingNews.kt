@@ -49,9 +49,8 @@ class BreakingNews : Fragment() {
                 newsViewModel. list. collect { pagingData ->
                     newsAdapter. submitData(pagingData)
                 }
-
-
     }
+
     }
     private fun setRecycler() {
         binding.rvBreakingNews.apply {
