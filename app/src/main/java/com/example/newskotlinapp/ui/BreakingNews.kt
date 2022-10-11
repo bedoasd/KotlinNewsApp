@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 
@@ -43,13 +44,21 @@ class BreakingNews : Fragment() {
 
         setRecycler()
 
+        newsAdapter.setOnItemClickListener {
+            val bundle =Bundle().apply {
+                putSerializable("article",it)
+            }
+            findNavController().navigate(
+                R.id.action_breakingNews_to_articalNewsFragment,bundle
+            )
+        }
 
 
-            lifecycleScope. launch {
+        lifecycleScope. launch {
                 newsViewModel. list. collect { pagingData ->
                     newsAdapter. submitData(pagingData)
                 }
-    }
+            }
 
     }
     private fun setRecycler() {

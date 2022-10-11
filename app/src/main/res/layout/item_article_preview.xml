@@ -3,9 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data >
+
+        <import type="com.example.newskotlinapp.models.Article" />
+
+       <variable
+        name="article"
+        type="Article" />
+
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:padding="8dp">
 
         <ImageView
@@ -13,10 +24,13 @@
             android:layout_width="160dp"
             android:layout_height="90dp"
             android:scaleType="centerCrop"
+            app:looad="@{article.urlToImage}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:text="@{article.source.name}"
+
             android:id="@+id/tvSource"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,7 +53,10 @@
             android:textStyle="bold"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/ivArticleImage"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@{article.title}"
+
+            />
 
         <TextView
 
@@ -51,6 +68,8 @@
             android:ellipsize="end"
             android:maxLines="5"
             tools:text="DESCRIPTION"
+            android:text="@{article.title}"
+
             android:textColor="@android:color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/ivArticleImage"
@@ -62,6 +81,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             tools:text="PUBLISHED AT"
+            android:text="@{article.title}"
+
             android:textColor="@android:color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvSource" />

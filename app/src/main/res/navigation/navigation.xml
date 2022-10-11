@@ -9,7 +9,13 @@
         android:id="@+id/articalNewsFragment"
         android:name="com.example.newskotlinapp.ui.ArticalNewsFragment"
         android:label="fragment_artical_news"
-        tools:layout="@layout/fragment_artical_news" />
+        tools:layout="@layout/fragment_artical_news" >
+        <argument
+            android:name="article"
+            app:argType="com.example.newskotlinapp.models.Article"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
     <fragment
         android:id="@+id/breakingNews"
         android:name="com.example.newskotlinapp.ui.BreakingNews"

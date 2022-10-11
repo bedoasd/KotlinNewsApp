@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newskotlinapp.R
@@ -41,6 +42,16 @@ class SearchNewsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        searchedAdapter.setOnItemClickListener {
+            val bundell=Bundle().apply {
+                putSerializable("article",it)
+            }
+            findNavController().navigate(
+                R.id.action_searchNewsFragment2_to_articalNewsFragment,bundell
+            )
+        }
+
         setRecycler()
 
         binding.etSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
