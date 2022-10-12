@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newskotlinapp.R
 import com.example.newskotlinapp.adapters.BreakingNewsPagingAdapter
+import com.example.newskotlinapp.adapters.SavedAdapter
 import com.example.newskotlinapp.databinding.FragmentSavedBinding
 import com.example.newskotlinapp.databinding.FragmentSearchNewsBinding
 import com.example.newskotlinapp.mvvm.NewsViewModel
@@ -22,7 +23,7 @@ class SavedNewsFragment : Fragment() {
 
    lateinit var  binding :FragmentSavedBinding
     val newsViewModel:NewsViewModel by viewModels()
-     var newsPagingAdapter= BreakingNewsPagingAdapter()
+     var savedAdapter= SavedAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,12 +38,10 @@ class SavedNewsFragment : Fragment() {
 
         setRecycler()
 
-        newsViewModel.getSavedArticles().observe(viewLifecycleOwner){
-            newsPagingAdapter.submitData(lifecycle,it)
-            Log.v("saved",it.toString())
+        newsViewModel.getSavedArticles().observe(viewLifecycleOwner,Observer{ article ->
+            savedAdapter.differ.submitList(article)
 
-
-        }
+        })
       /* newsViewModel.getSavedArticles().observe(viewLifecycleOwner){
             newsPagingAdapter.submitData(lifecycle,it)
 
@@ -54,7 +53,7 @@ class SavedNewsFragment : Fragment() {
 
     private fun setRecycler() {
         binding.rvSavedNews.apply {
-            adapter=newsPagingAdapter
+            adapter=savedAdapter
             layoutManager=LinearLayoutManager(activity)
         }
     }

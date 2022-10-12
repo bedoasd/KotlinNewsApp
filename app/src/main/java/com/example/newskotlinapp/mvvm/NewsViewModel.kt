@@ -7,16 +7,11 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.*
 import com.example.newskotlinapp.api.NewsApi
 import com.example.newskotlinapp.models.Article
-import com.example.newskotlinapp.models.NewsResponse
 import com.example.newskotlinapp.paging.NewsPaging
-import com.example.newskotlinapp.paging.SavedPaging
 import com.example.newskotlinapp.paging.SearchedNewsPaging
 import com.example.newskotlinapp.repo.NewsRepository
-import com.example.newskotlinapp.util.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import org.w3c.dom.CharacterData
-import java.util.concurrent.Flow
 import javax.inject.Inject
 
 @HiltViewModel
@@ -49,9 +44,8 @@ class NewsViewModel @Inject constructor( val newsApi: NewsApi , val newsReposito
         newsRepository.upsert(article)
     }
 
-    fun getSavedArticles()= Pager(PagingConfig(pageSize = 10)){
-        SavedPaging(newsRepository)
-    }.liveData.cachedIn(viewModelScope)
+    fun getSavedArticles()= newsRepository.getAllSavedArticles()
+
 
 
 
