@@ -39,26 +39,26 @@ class BreakingNewsPagingAdapter :PagingDataAdapter<Article,BreakingNewsPagingAda
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
       //  val article = Diff_Utils.[position]
         val data =getItem(position)
-        holder.previewBinding.setVariable(BR.article,data)
+        /*holder.previewBinding.setVariable(BR.article,data)
 
        holder.previewBinding.root.setOnClickListener {
 
             onItemClickListener?.let { it(data!!) }
-        }
-            /*holder.itemView.apply {
-                Glide.with(this).load(data.urlToImage).into(ivArticleImage)
+        }*/
+            holder.itemView.apply {
 
-                tvTitle.text = data.title
-                tvDescription.text = data.description
-                tvPublishedAt.text = data.publishedAt
-                tvSource.text = data.source.name
+                tvTitle.text = data?.title
+                tvDescription.text = data?.description
+                tvPublishedAt.text = data?.publishedAt
+                tvSource.text = data?.source?.name
+                Glide.with(ivArticleImage).load(data?.urlToImage).into(ivArticleImage)
 
 
-               setOnClickListener {
+                setOnClickListener {
 
                 onItemClickListener?.let { it(data!!) }
             }
-        }*/
+        }
 
         }
 
