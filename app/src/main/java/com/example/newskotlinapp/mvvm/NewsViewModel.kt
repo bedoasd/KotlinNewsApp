@@ -44,13 +44,14 @@ class NewsViewModel @Inject constructor( val newsApi: NewsApi , val newsReposito
         newsRepository.upsert(article)
     }
 
-    fun getSavedArticles()= newsRepository.getAllSavedArticles()
+    fun getSavedArticles() = newsRepository.getAllSavedArticles()
 
 
 
 
-    fun deleteArticle(article: Article)=viewModelScope.launch {
-        newsRepository.delet(article)
+
+    fun deleteArticle(article: Article) = viewModelScope.launch {
+        newsRepository.delete(article)
     }
 
 }

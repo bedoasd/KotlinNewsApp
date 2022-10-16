@@ -13,8 +13,7 @@
         <argument
             android:name="article"
             app:argType="com.example.newskotlinapp.models.Article"
-            app:nullable="true"
-            android:defaultValue="@null" />
+            />
     </fragment>
     <fragment
         android:id="@+id/breakingNews"
