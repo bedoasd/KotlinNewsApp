@@ -1,6 +1,6 @@
 # KotlinNewsApp
 
-News App is an application that displays Newws and allows you (search for any Article - learn more about movie details (name, release date ,overview)))
+News App is an application that displays News and allows you (search for any Article - learn more about movie details (name, release date ,overview)))
 <br/>Tools used:
   <br/>-Android Studio
   <br/>-kotlin
